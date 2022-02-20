@@ -23,7 +23,7 @@ def backgroundchange():
             for file in files:
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    file.save(os.path.join('uploads', filename))
+                    file.save(os.path.abspath('uploads') +'/'+ filename)
 
             change_bg = alter_bg()
             change_bg.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
