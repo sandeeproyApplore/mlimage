@@ -23,15 +23,15 @@ def backgroundchange():
             for file in files:
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    file.save(os.path.abspath('uploads') +'/'+ filename)
+                    file.save(filename)
 
             change_bg = alter_bg()
             change_bg.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
-            output = change_bg.change_bg_img(f_image_path = 'uploads/'+files[0].filename  ,b_image_path = 'uploads/'+files[1].filename )
-            cv2.imwrite("uploads/piclab/updatedimg.jpg", output)
-            resImg = cv2.imread('uploads/piclab/updatedimg.jpg')
-            os.unlink('uploads/'+files[0].filename)
-            os.unlink('uploads/'+files[1].filename)
+            output = change_bg.change_bg_img(f_image_path = files[0].filename  ,b_image_path = files[1].filename )
+            cv2.imwrite("updatedimg.jpg", output)
+            resImg = cv2.imread('updatedimg.jpg')
+            os.unlink(files[0].filename)
+            os.unlink(files[1].filename)
             return jsonify({"msg":"Successfully Uploaded!!"})  
    
     else:
