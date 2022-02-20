@@ -35,10 +35,10 @@ def backgroundchange():
             return jsonify({"msg":"Successfully Uploaded!!"})  
    
     else:
-       pic1 = cv2.imread('uploads/piclab/updatedimg.jpg')
-       cv2.imshow('image', pic1) 
-       cv2.waitKey(0)        
-       cv2.destroyAllWindows()
+    #    pic1 = cv2.imread('uploads/piclab/updatedimg.jpg')
+    #    cv2.imshow('image', pic1) 
+    #    cv2.waitKey(0)        
+    #    cv2.destroyAllWindows()
        return jsonify({'msg':'successfully shown Image'})
 
 
