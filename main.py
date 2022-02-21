@@ -28,10 +28,10 @@ def backgroundchange():
             change_bg = alter_bg()
             change_bg.load_pascalvoc_model("deeplabv3_xception_tf_dim_ordering_tf_kernels.h5")
             output = change_bg.change_bg_img(f_image_path = os.path.join(app.config['UPLOAD_FOLDER'], files[0].filename)  ,b_image_path = os.path.join(app.config['UPLOAD_FOLDER'], files[1].filename))
-            cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], "updatedimg.jpg"), output)
+            cv2.imwrite("uploads/updatedimg.jpg", output)
             os.unlink(os.path.join(app.config['UPLOAD_FOLDER'] ,files[0].filename))
             os.unlink(os.path.join(app.config['UPLOAD_FOLDER'] ,files[1].filename))
-            return send_file('updatedimg.jpg', mimetype='image/gif') 
+            return send_file(os.path.join(app.config['UPLOAD_FOLDER'], "updatedimg.jpg"), mimetype='image/gif')
    
     else:
     #    pic1 = cv2.imread('uploads/piclab/updatedimg.jpg')
